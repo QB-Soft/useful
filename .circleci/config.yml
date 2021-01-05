@@ -37,6 +37,9 @@ jobs:
       - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+      -run:
+          name: Version Bump
+          command: npm version $CIRCLE_TAG
       - run:
           name: Publish package
           command: npm publish
