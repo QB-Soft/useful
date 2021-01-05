@@ -33,7 +33,8 @@
   "scripts": {
     "build": "tsc",
     "prepare": "npm run test && npm run build",
-    "test": "jest --coverage"
+    "test:local": "jest --coverage",
+    "test:ci": "jest --runInBand --ci"
   },
   "devDependencies": {
     "@types/jest": "^26.0.19",
