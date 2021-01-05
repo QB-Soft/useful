@@ -1,3 +1,4 @@
+version: 2.1
 orbs:
   node: circleci/node@3.0.0
   npm-publisher: uraway/npm-publisher@0.2.0
@@ -11,7 +12,7 @@ workflows:
           filters:
             branches:
               only: master
-          fingerprints: be:d6:8a:b2:cd:7d:e5:c3:26:4f:66:2a:32:eb:aa:13
+          ssh-fingerprints: be:d6:8a:b2:cd:7d:e5:c3:26:4f:66:2a:32:eb:aa:13
           post-publish-steps:
             - save_cache:
                 key: 'v1-node-cache-{{ .Branch }}-{{ checksum "package-lock.json" }}'
