@@ -16,7 +16,7 @@ jobs:
           - v1-dependencies-{{ checksum "package.json" }}
           - v1-dependencies-
 
-      - run: npm ci
+      - run: npm install
       - run:
           name: Run tests
           command: npm run test:ci
