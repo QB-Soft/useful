@@ -1,4 +1,4 @@
-import { selectRandomlyFromArray } from '../src/index';
+import { selectRandomlyFromArray } from '../src/arrays';
 
 describe('selectRandomlyFromArray', () => {
     it('should return undefined if given an empty array', () => {
