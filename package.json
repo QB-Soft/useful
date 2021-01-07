@@ -32,7 +32,7 @@
   ],
   "scripts": {
     "build": "tsc",
-    "prepare": "npm run test && npm run build",
+    "prepare": "npm run test:ci && npm run build",
     "test:local": "jest --coverage",
     "test:ci": "jest --runInBand --ci"
   },
