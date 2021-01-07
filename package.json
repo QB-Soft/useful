@@ -1,7 +1,7 @@
 {
   "name": "@qarun-qb/useful",
   "description": "A library containing useful functions to work with Object, Strings, Arrays and more.",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "author": {
     "name": "Qarun Qadir Bissoondial",
     "email": "qarun80@hotmail.com",
