@@ -1,8 +1,6 @@
 
 /**
- * Returns the order suffix of a given number. Eg. 1 -> "1st", 23 -> "23rd". Also accounts for negative numbers
- * @param { string | number } num Given number
- * @returns { string } The number with order suffix
+ * Returns the order suffix of a given number. Eg. 1 -> "1st", 23 -> "23rd". Also accounts for negative numbers.
  */
 export const getOrderSuffix = (num: string | number): string => {
   if (!num) { throw new Error('Null or Undefined passed in'); }
@@ -35,5 +33,3 @@ export const getOrderSuffix = (num: string | number): string => {
   if (suffixMap[endValue] === undefined) { return `${parseInt(num, 10)}th`; }
   return `${parseInt(num, 10)}${suffixMap[endValue]}`;
 };
-
-export const fn = () => 1;
