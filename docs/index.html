@@ -1,0 +1,168 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>@qarun-qb/useful</title>
+	<meta name="description" content="Documentation for @qarun-qb/useful">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script async src="assets/js/search.js" id="search-script"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">@qarun-qb/useful</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<h1>@qarun-qb/useful</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<a href="#useful" id="useful" style="color: inherit; text-decoration: none;">
+					<h1>Useful</h1>
+				</a>
+				<p>A library containing useful functions to work with Object, Strings, Arrays and more</p>
+				<a href="#installation" id="installation" style="color: inherit; text-decoration: none;">
+					<h2>Installation</h2>
+				</a>
+				<p>Run <code>npm install @qarun-qb/useful@latest --save</code></p>
+				<a href="#usage" id="usage" style="color: inherit; text-decoration: none;">
+					<h2>Usage</h2>
+				</a>
+				<p>There are currently 4 major categories of useful functions:</p>
+				<ul>
+					<li>Objects</li>
+					<li>Arrays</li>
+					<li>Strings</li>
+					<li>Numbers</li>
+				</ul>
+				<p>For a regular JavaScript project, simply require the functions you need directly.</p>
+				<pre><code><span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">selectRandomlyFromArray</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;@qarun-qb/useful/arrays&#039;</span><span style="color: #000000">); </span><span style="color: #008000">// import array function</span>
+<span style="color: #0000FF">const</span><span style="color: #000000"> { </span><span style="color: #0070C1">removeFalsyValues</span><span style="color: #000000"> } = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;@qarun-qb/useful/objects&#039;</span><span style="color: #000000">); </span><span style="color: #008000">// import object function</span>
+
+<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">arrayFunctions</span><span style="color: #000000"> = </span><span style="color: #795E26">require</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;@qarun-qb/useful/arrays&#039;</span><span style="color: #000000">); </span><span style="color: #008000">// import all array functions</span>
+</code></pre>
+				<p>Imports for TypeScript projects work as they normally do as well.</p>
+				<pre><code><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">selectRandomlyFromArray</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@qarun-qb/useful/arrays&#039;</span><span style="color: #000000">; </span>
+<span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #0000FF">*</span><span style="color: #000000"> </span><span style="color: #AF00DB">as</span><span style="color: #000000"> </span><span style="color: #001080">arrayFunctions</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;@qarun-qb/useful/arrays&#039;</span><span style="color: #000000">;</span>
+</code></pre>
+				<a href="#function-list" id="function-list" style="color: inherit; text-decoration: none;">
+					<h2>Function List</h2>
+				</a>
+				<a href="#objects" id="objects" style="color: inherit; text-decoration: none;">
+					<h3>Objects</h3>
+				</a>
+				<ul>
+					<li>selectRandomlyFromArray</li>
+				</ul>
+				<a href="#arrays" id="arrays" style="color: inherit; text-decoration: none;">
+					<h3>Arrays</h3>
+				</a>
+				<a href="#numbers" id="numbers" style="color: inherit; text-decoration: none;">
+					<h3>Numbers</h3>
+				</a>
+				<a href="#strings" id="strings" style="color: inherit; text-decoration: none;">
+					<h3>Strings</h3>
+				</a>
+				<a href="#testing" id="testing" style="color: inherit; text-decoration: none;">
+					<h2>Testing</h2>
+				</a>
+				<p>Tests are written in jest and can be found in the tests folder. Each category will have it&#39;s own testing file. </p>
+				<p>Test files are named by their category. For example, all tests for array functions will go inside <code>arrays.spec.ts</code>. General structure for writing tests is: </p>
+				<pre><code><span style="color: #008000">// Each function gets its own describe block</span>
+<span style="color: #795E26">describe</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;Function name&#039;</span><span style="color: #000000">, () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+
+<span style="color: #000000">    </span><span style="color: #795E26">it</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;test scenario 1&#039;</span><span style="color: #000000">, () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">        </span><span style="color: #008000">// test code goes here</span>
+<span style="color: #000000">    });</span>
+
+<span style="color: #000000">    </span><span style="color: #795E26">it</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;test scenario 2&#039;</span><span style="color: #000000">, () </span><span style="color: #0000FF">=&gt;</span><span style="color: #000000"> {</span>
+<span style="color: #000000">        </span><span style="color: #008000">// test code goes here</span>
+<span style="color: #000000">    });</span>
+
+<span style="color: #000000">    ...</span>
+
+<span style="color: #000000">})</span>
+
+</code></pre>
+				<p>Clone the repository and run <code>npm run test</code>. A coverage report is automatically generated.</p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class=" ">
+						<a href="modules.html">Modules</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/arrays.html">arrays</a>
+					</li>
+					<li class=" tsd-kind-module">
+						<a href="modules/numbers.html">numbers</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+</body>
+</html>

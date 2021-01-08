@@ -57,18 +57,18 @@ jobs:
 
 workflows:
   version: 2
-  test-deploy:
+  main:
     jobs:
       - test
       - docs:
           requires:
             - test
           filters:
-            tags:
-              only: /^v.*/
+            branches:
+              only: master
       - deploy:
           requires:
             - test
           filters:
-            tags:
-              only: /^v.*/
+            branches:
+              only: master
