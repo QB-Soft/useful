@@ -109,19 +109,19 @@ workflows:
       - test
       - patch-release:
           requires:
-              - test
-            filters:
-              branches:
-                only: patch
+            - test
+          filters:
+            branches:
+              only: patch
       - minor-release:
           requires:
-              - test
-            filters:
-              branches:
-                only: minor
+            - test
+          filters:
+            branches:
+              only: minor
       - major-release:
           requires:
-              - test
-            filters:
-              branches:
-                only: major
+            - test
+          filters:
+            branches:
+              only: major
