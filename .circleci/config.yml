@@ -40,10 +40,10 @@ jobs:
       - run:
           name: Add docs
           command: git add --all
-       - run:
+      - run:
           name: Commit docs
           command: git commit -am "[ci skip] Auto-generated Documentation"
-       - run:
+      - run:
           name: Push docs to current branch
           command: git push
   deploy:
