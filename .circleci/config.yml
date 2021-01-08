@@ -5,6 +5,39 @@ defaults: &defaults
   docker:
     - image: circleci/node:12
 
+commands:
+  docs:
+    steps:
+      - run:
+          name: Generate Documentation
+          command: npm run docs
+      - run:
+          name: Add docs
+          command: git add --all
+      - run:
+          name: Commit docs
+          command: git commit -am "[ci skip] Auto-generated Documentation"
+      - run:
+          name: Push docs to current branch
+          command: git push
+  version_bump:
+    parameters:
+      vertype:
+        default: "minor"
+        type: string
+    steps:
+      - run:
+          name: Bump package <<parameters.vertype>> version
+          command: npm version <<parameters.vertype>> -m "Bumped to %s"
+  publish:
+    steps:
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish package
+          command: npm publish
+
 jobs:
   test:
     <<: *defaults
@@ -29,55 +62,66 @@ jobs:
       - persist_to_workspace:
           root: ~/repo
           paths: .
-  docs:
+
+  patch-release:
     <<: *defaults
     steps:
       - attach_workspace:
           at: ~/repo
-      - run:
-          name: Generate Documentation
-          command: npm run docs
-      - run:
-          name: Add docs
-          command: git add --all
-      - run:
-          name: Commit docs
-          command: git commit -am "[ci skip] Auto-generated Documentation"
-      - run:
-          name: Push docs to current branch
-          command: git push
-  deploy:
+      - docs
+      - version_bump:
+          vertype: "patch"
+      - publish
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+
+  minor-release:
     <<: *defaults
     steps:
       - attach_workspace:
           at: ~/repo
-      - run:
-          name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/repo/.npmrc
-      - run:
-          name: Print current npm version
-          command: npm version
-      - run:
-          name: Version Bump
-          command: npm version $CIRCLE_TAG
-      - run:
-          name: Publish package
-          command: npm publish
+      - docs
+      - version_bump:
+          vertype: "minor"
+      - publish
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+
+  major-release:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - docs
+      - version_bump:
+          vertype: "major"
+      - publish
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
 
 workflows:
   version: 2
   main:
     jobs:
       - test
-      - docs:
+      - patch-release:
           requires:
-            - test
-          filters:
-            branches:
-              only: master
-      - deploy:
+              - test
+            filters:
+              branches:
+                only: patch
+      - minor-release:
           requires:
-            - test
-          filters:
-            branches:
-              only: master
+              - test
+            filters:
+              branches:
+                only: minor
+      - major-release:
+          requires:
+              - test
+            filters:
+              branches:
+                only: major
