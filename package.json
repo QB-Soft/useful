@@ -29,7 +29,8 @@
   "types": "./dist/index.d.ts",
   "files": [
     "dist",
-    "arrays"
+    "arrays",
+    "numbers"
   ],
   "scripts": {
     "build": "tsc",

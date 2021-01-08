@@ -1,14 +1,20 @@
-// export const giveNumberOrderSuffix = (numberAsString: string | number): string => {
-//   if (!numberAsString) { throw new Error('Null or Undefined passed in'); }
-//   numberAsString = numberAsString.toString();
-//   if (!(/^[0-9]+$/.test(numberAsString))) { throw new Error('A number was not passed in'); }
-//   const endValue: string = numberAsString.trim().slice(-1);
 
-//   const suffixMap: { [key: string]: string } = {
-//       1: 'st',
-//       2: 'nd',
-//       3: 'rd'
-//   };
+/**
+ * Returns the order suffix of a given number. Eg. 1 -> "1st", 23 -> "23rd". Also accounts for negative numbers
+ * @param { string | number } num Given number
+ * @returns { string } The number with order suffix
+ */
+export const getOrderSuffix = (num: string | number): string => {
+  if (!num) { throw new Error('Null or Undefined passed in'); }
+  num = num.toString();
+  if (!(/^[0-9]+$/.test(num))) { throw new Error('A number was not passed in'); }
+  const endValue: string = num.trim().slice(-1);
+
+  const suffixMap: { [key: string]: string } = {
+      1: 'st',
+      2: 'nd',
+      3: 'rd'
+  };
 
 //   const edgeCases = [11, 12, 13];
 
@@ -26,8 +32,8 @@
 //       : `${value}${suffix}`;
 //   }
 
-//   if (suffixMap[endValue] === undefined) { return `${parseInt(numberAsString, 10)}th`; }
-//   return `${parseInt(numberAsString, 10)}${suffixMap[endValue]}`;
-// };
+  if (suffixMap[endValue] === undefined) { return `${parseInt(num, 10)}th`; }
+  return `${parseInt(num, 10)}${suffixMap[endValue]}`;
+};
 
 export const fn = () => 1;
