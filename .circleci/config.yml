@@ -29,6 +29,14 @@ jobs:
       - persist_to_workspace:
           root: ~/repo
           paths: .
+  docs:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Generate Documentation
+          command: npm run docs
   deploy:
     <<: *defaults
     steps:
@@ -52,6 +60,12 @@ workflows:
   test-deploy:
     jobs:
       - test
+      - docs:
+          requires:
+            - test
+          filters:
+            tags:
+              only: /^v.*/
       - deploy:
           requires:
             - test
