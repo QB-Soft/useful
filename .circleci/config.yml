@@ -37,6 +37,15 @@ jobs:
       - run:
           name: Generate Documentation
           command: npm run docs
+      - run:
+          name: Add docs
+          command: git add --all
+       - run:
+          name: Commit docs
+          command: git commit -am "[ci skip] Auto-generated Documentation"
+       - run:
+          name: Push docs to current branch
+          command: git push
   deploy:
     <<: *defaults
     steps:
