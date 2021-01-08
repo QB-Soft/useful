@@ -1,0 +1,1 @@
+import { getOrderSuffix } from '../src/numbers'
