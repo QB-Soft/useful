@@ -47,7 +47,6 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - docs
       - run:
           name: Build
           command: npm run build
@@ -142,3 +141,5 @@ workflows:
           filters:
             tags:
               only: /^v.*/
+            branches:
+              ignore: /.*/
