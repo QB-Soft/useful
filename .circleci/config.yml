@@ -91,45 +91,6 @@ jobs:
           root: ~/repo
           paths: .
 
-  # patch-release:
-  #   <<: *defaults
-  #   steps:
-  #     - attach_workspace:
-  #         at: ~/repo
-  #     - docs
-  #     - version_bump:
-  #         vertype: "patch"
-  #     - publish
-  #     - persist_to_workspace:
-  #         root: ~/repo
-  #         paths: .
-
-  # minor-release:
-  #   <<: *defaults
-  #   steps:
-  #     - attach_workspace:
-  #         at: ~/repo
-  #     - docs
-  #     - version_bump:
-  #         vertype: "minor"
-  #     - publish
-  #     - persist_to_workspace:
-  #         root: ~/repo
-  #         paths: .
-
-  # major-release:
-  #   <<: *defaults
-  #   steps:
-  #     - attach_workspace:
-  #         at: ~/repo
-  #     - docs
-  #     - version_bump:
-  #         vertype: "major"
-  #     - publish
-  #     - persist_to_workspace:
-  #         root: ~/repo
-  #         paths: .
-
 workflows:
   version: 2
   main:
