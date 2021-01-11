@@ -52,7 +52,7 @@ jobs:
           command: npm run build
       - run:
           name: Bump Package version
-          command: npm version $CIRCLE_TAG
+          command: npm version $CIRCLE_BRANCH
       - run:
           name: Update Github tags
           command: git push --tags
@@ -100,7 +100,5 @@ workflows:
           requires:
             - test
           filters:
-            tags:
-              only: /^v.*/
             branches:
-              ignore: /.*/
+              ignore: ^(?!v.*).*$
