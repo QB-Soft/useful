@@ -12,7 +12,7 @@ commands:
           name: Generate Documentation
           command: npm run docs
       - run:
-          name: Set Git Stuf
+          name: Set Git Stuff
           command: git config --global user.email "qarun80@hotmail.com" && git config --global user.name "Qarun Qadir Bissoondial" && git pull origin main
       - run:
           name: Add docs
@@ -42,6 +42,32 @@ commands:
           command: npm publish
 
 jobs:
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - docs
+      - run:
+          name: Build
+          command: npm run build
+      - run:
+          name: Bump Package version
+          command: npm version $CIRCLE_TAG
+      - run:
+          name: Update Github tags
+          command: git push --tags
+      - run:
+          name: Deploy
+          command: npm publish
+
+      - version_bump:
+          vertype: "patch"
+      - publish
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+
   test:
     <<: *defaults
     steps:
@@ -66,65 +92,55 @@ jobs:
           root: ~/repo
           paths: .
 
-  patch-release:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/repo
-      - docs
-      - version_bump:
-          vertype: "patch"
-      - publish
-      - persist_to_workspace:
-          root: ~/repo
-          paths: .
+  # patch-release:
+  #   <<: *defaults
+  #   steps:
+  #     - attach_workspace:
+  #         at: ~/repo
+  #     - docs
+  #     - version_bump:
+  #         vertype: "patch"
+  #     - publish
+  #     - persist_to_workspace:
+  #         root: ~/repo
+  #         paths: .
 
-  minor-release:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/repo
-      - docs
-      - version_bump:
-          vertype: "minor"
-      - publish
-      - persist_to_workspace:
-          root: ~/repo
-          paths: .
+  # minor-release:
+  #   <<: *defaults
+  #   steps:
+  #     - attach_workspace:
+  #         at: ~/repo
+  #     - docs
+  #     - version_bump:
+  #         vertype: "minor"
+  #     - publish
+  #     - persist_to_workspace:
+  #         root: ~/repo
+  #         paths: .
 
-  major-release:
-    <<: *defaults
-    steps:
-      - attach_workspace:
-          at: ~/repo
-      - docs
-      - version_bump:
-          vertype: "major"
-      - publish
-      - persist_to_workspace:
-          root: ~/repo
-          paths: .
+  # major-release:
+  #   <<: *defaults
+  #   steps:
+  #     - attach_workspace:
+  #         at: ~/repo
+  #     - docs
+  #     - version_bump:
+  #         vertype: "major"
+  #     - publish
+  #     - persist_to_workspace:
+  #         root: ~/repo
+  #         paths: .
 
 workflows:
   version: 2
   main:
     jobs:
       - test
-      - patch-release:
+      - deploy:
           requires:
-            - test
+            - build
           filters:
+            tags:
+              only: /^v.*/
             branches:
-              only: patch
-      - minor-release:
-          requires:
-            - test
-          filters:
-            branches:
-              only: minor
-      - major-release:
-          requires:
-            - test
-          filters:
-            branches:
-              only: major
+              ignore: /.*/
