@@ -1,13 +1,13 @@
 # Useful
 
-[![QB-Soft](https://circleci.com/gh/QB-Soft/useful.svg?style=shield)](https://www.npmjs.com/package/@qarun-qb/useful) ![npm](https://img.shields.io/npm/dm/@qarun-qb/useful) ![npm (scoped)](https://img.shields.io/npm/v/@qarun-qb/useful)
+[![QB-Soft](https://circleci.com/gh/QB-Soft/useful.svg?style=shield)](https://app.circleci.com/pipelines/github/QB-Soft/useful?branch=main) ![npm](https://img.shields.io/npm/dm/@qb-soft/useful) ![npm (scoped)](https://img.shields.io/npm/v/@qb-soft/useful)
 <!-- ![NPM](https://img.shields.io/npm/l/@qarun-qb/useful) -->
 
 A library containing useful functions to work with Object, Strings, Arrays and more
 
 ## Installation 
 
-Run `npm install @qarun-qb/useful@latest --save`
+Run `npm install @qb-soft/useful@latest --save`
 
 ## Usage
 
