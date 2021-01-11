@@ -1,7 +1,7 @@
 # Useful
 
 [![QB-Soft](https://circleci.com/gh/QB-Soft/useful.svg?style=shield)](https://app.circleci.com/pipelines/github/QB-Soft/useful?branch=main) ![npm](https://img.shields.io/npm/dm/@qb-soft/useful) ![npm (scoped)](https://img.shields.io/npm/v/@qb-soft/useful)
-<!-- ![NPM](https://img.shields.io/npm/l/@qarun-qb/useful) -->
+<!-- ![NPM](https://img.shields.io/npm/l/@qb-soft/useful) -->
 
 A library containing useful functions to work with Object, Strings, Arrays and more
 
@@ -21,17 +21,17 @@ There are currently 4 major categories of useful functions:
 For a regular JavaScript project, simply require the functions you need directly.
 
 ```
-const { selectRandomlyFromArray } = require('@qarun-qb/useful/arrays'); // import array function
-const { removeFalsyValues } = require('@qarun-qb/useful/objects'); // import object function
+const { selectRandomlyFromArray } = require('@qb-soft/useful/arrays'); // import array function
+const { removeFalsyValues } = require('@qb-soft/useful/objects'); // import object function
 
-const arrayFunctions = require('@qarun-qb/useful/arrays'); // import all array functions
+const arrayFunctions = require('@qb-soft/useful/arrays'); // import all array functions
 ```
 
 Imports for TypeScript projects work as they normally do as well.
 
 ```
-import { selectRandomlyFromArray } from '@qarun-qb/useful/arrays'; 
-import * as arrayFunctions from '@qarun-qb/useful/arrays';
+import { selectRandomlyFromArray } from '@qb-soft/useful/arrays'; 
+import * as arrayFunctions from '@qb-soft/useful/arrays';
 ```
 
 ## Function List
