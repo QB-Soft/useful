@@ -1,4 +1,4 @@
-import { getOrderSuffix } from '../src/numbers'
+import {generateNumberInRange, getOrderSuffix} from '../src/numbers'
 
 describe('getOrderSuffix', () => {
     it('should work with numbers', () => {
@@ -38,4 +38,38 @@ describe('getOrderSuffix', () => {
         expect(() => { getOrderSuffix(null) }).toThrowError('Cannot pass null into getOrderSuffix Function')
         expect(() => { getOrderSuffix('pool table' as any); }).toThrowError('Cannot pass pool table into getOrderSuffix Function')
     });
-})
+});
+
+describe('generateNumberInRange', () => {
+    it('should generate a number within the default range (0 - 100)', () => {
+        const number = generateNumberInRange();
+        expect(number).toBeDefined();
+        expect(number).toBeLessThan(100);
+        expect(number).toBeGreaterThan(0);
+        expect(Number.isInteger(number)).toBeTruthy();
+    });
+
+    it('should generate a floating point number if specified', () => {
+        const number = generateNumberInRange(0, 100, true);
+        expect(Number.isInteger(number)).toBe(false);
+    });
+
+    it('should work when both limits are negative numbers', () => {
+        const number = generateNumberInRange(-200, -100);
+        expect(number).toBeGreaterThan(-200);
+        expect(number).toBeLessThan(-100);
+    });
+
+    it('should work when the lower limit is negative and the upper limit is non-negative', () => {
+        const number = generateNumberInRange(-200, 100);
+        expect(number).toBeGreaterThan(-200);
+        expect(number).toBeLessThan(100);
+    });
+
+    it('should work when both limits are the same number', () => {
+        expect(generateNumberInRange(100, 100)).toBe(100);
+        expect(generateNumberInRange(-100, -100)).toBe(-100);
+        expect(generateNumberInRange(100, 100, true)).toBe(100);
+    });
+
+});
