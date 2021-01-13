@@ -1,0 +1,5 @@
+{
+  "name":"@qarun-qb/useful/objects",
+  "private":true,
+  "main":"../dist/objects/index.js"
+}
