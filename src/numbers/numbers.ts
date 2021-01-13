@@ -36,17 +36,17 @@ export const getOrderSuffix = (num: number): string => {
 };
 
 /**
- * Returns a number between a lower and upper limit **non-inclusive**. Default limit is 0 - 100 if no parameters are specified.
- * Can also return a float to 2 decimal places if required.
+ * Returns a floating point number to 2 decimal places between a lower and upper limit **non-inclusive**. Default limit is 0 - 100 if no parameters are specified.
+ * Strict integer returns can also be specified.
  *
  * ```
- *  generateNumberInRange() → 54
- *  generateNumberInRange(100, 200) → 145
- *  generateNumberInRange(-200, -100, true) → -145.34
+ *  generateNumberInRange() → 54.12
+ *  generateNumberInRange(100, 200) → 145.23
+ *  generateNumberInRange(-200, -100, true) → -145
  * ```
  */
-export const generateNumberInRange = (lowerLimit: number = 0, upperLimit: number = 100, returnFloat: boolean = false): number => {
+export const generateNumberInRange = (lowerLimit: number = 0, upperLimit: number = 100, returnInteger: boolean = false): number => {
   const difference = upperLimit - lowerLimit;
   const result = (Math.random() * difference) + lowerLimit;
-  return returnFloat ? (Math.round(result * 100) / 100)  : Math.floor(result);
+  return returnInteger ? Math.floor(result) : (Math.round(result * 100) / 100);
 }

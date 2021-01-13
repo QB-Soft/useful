@@ -46,12 +46,11 @@ describe('generateNumberInRange', () => {
         expect(number).toBeDefined();
         expect(number).toBeLessThan(100);
         expect(number).toBeGreaterThan(0);
-        expect(Number.isInteger(number)).toBeTruthy();
     });
 
-    it('should generate a floating point number if specified', () => {
+    it('should generate an integer if specified', () => {
         const number = generateNumberInRange(0, 100, true);
-        expect(Number.isInteger(number)).toBe(false);
+        expect(Number.isInteger(number)).toBe(true);
     });
 
     it('should work when both limits are negative numbers', () => {
