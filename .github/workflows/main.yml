@@ -48,8 +48,14 @@ jobs:
       - name: Set creds
         run: git config --global user.email "qarun80@hotmail.com" && git config --global user.name "Qarun-Qadir-Bissoondial"
 
-      - name: Push Docs to main
-        run: git add --all && git commit -am "Updated docs for {{env.GITHUB_REF_SLUG}}" && git push origin env.GITHUB_REF_SLUG main
+      - name: Add
+        run: git add --all
+
+      - name: Commit
+        run: git commit -am "Updated docs for {{env.GITHUB_REF_SLUG}}"
+
+      - name: Push to main
+        run : git push origin env.GITHUB_REF_SLUG main
 
 #      - name: Version Bump
 #        run: npm version env.GITHUB_REF_SLUG --allow-same-version
