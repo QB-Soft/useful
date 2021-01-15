@@ -55,7 +55,7 @@ jobs:
         run: git commit -am "Updated docs for ${{env.GITHUB_REF_SLUG}}"
 
       - name: Push to main
-        run : git push origin ${{env.GITHUB_REF_SLUG}} main
+        run : git push origin ${{env.GITHUB_REF_SLUG}}:main
 
 #      - name: Version Bump
 #        run: npm version env.GITHUB_REF_SLUG --allow-same-version
