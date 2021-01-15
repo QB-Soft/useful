@@ -1,6 +1,9 @@
 name: Node CI
 
-on: push
+on:
+  push:
+    branches: 
+      - 'v[12].[0-9]+.[0-9]+'
 
 jobs:
   build:
@@ -27,9 +30,6 @@ jobs:
 
       - name: Install 🔧
         run: npm install
-
-      - name: Build 🏗️
-        run: npm run build
-
+      
       - name: Test 🚨
         run: npm test
