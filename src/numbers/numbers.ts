@@ -1,35 +1,52 @@
 
 /**
- * Returns the order suffix of a given number. Eg. 1 -> "1st", 23 -> "23rd". Also accounts for negative numbers.
+ * Returns the order suffix of a given number. Also accounts for negative numbers.
+ *
+ * ```
+ *  getOrderSuffix(1) → "1st"
+ *  getOrderSuffix(-12) → "-12th"
+ *  getOrderSuffix(213) → "213th"
+ * ```
  */
-export const getOrderSuffix = (num: string | number): string => {
-  if (!num) { throw new Error('Null or Undefined passed in'); }
-  num = num.toString();
-  if (!(/^[0-9]+$/.test(num))) { throw new Error('A number was not passed in'); }
-  const endValue: string = num.trim().slice(-1);
+export const getOrderSuffix = (num: number): string => {
+  if (!Number.isInteger(num)) { throw new Error(`Cannot pass ${num} into getOrderSuffix Function`); }
 
-  const suffixMap: { [key: string]: string } = {
-      1: 'st',
-      2: 'nd',
-      3: 'rd'
+  const isNegative = num < 0;
+  const posNum = Math.abs(num);
+  let finalNum: string;
+  const suffixMap: { [key: number]: string } = {
+    1: 'st',
+    2: 'nd',
+    3: 'rd'
   };
+  const edgeCases = [11, 12, 13];
+  const lastTwoDigits = posNum % 100;
 
-//   const edgeCases = [11, 12, 13];
+  if (edgeCases.includes(lastTwoDigits)) {
+    return `${isNegative ? '-' : ''}${posNum}th`
+  }
 
-//   const lastTwoDigits = value % 100;
-    
-//     if (this.edgeCases.includes(lastTwoDigits)) {
-//       return `${value}th`
-//     }
+  const lastDigit = posNum % 10;
+  const suffix = suffixMap[lastDigit] || suffixMap[lastDigit * -1]
+  finalNum = `${isNegative ? '-' : ''}${posNum}`;
 
-//     const lastDigit = value % 10;
-//     const suffix = this.suffixMap[lastDigit];
-
-//     return !suffix
-//       ? `${value}th`
-//       : `${value}${suffix}`;
-//   }
-
-  if (suffixMap[endValue] === undefined) { return `${parseInt(num, 10)}th`; }
-  return `${parseInt(num, 10)}${suffixMap[endValue]}`;
+  return !suffix
+    ? `${finalNum}th`
+    : `${finalNum}${suffix}`;
 };
+
+/**
+ * Returns a floating point number to 2 decimal places between a lower and upper limit **non-inclusive**. Default limit is 0 - 100 if no parameters are specified.
+ * Strict integer returns can also be specified.
+ *
+ * ```
+ *  generateNumberInRange() → 54.12
+ *  generateNumberInRange(100, 200) → 145.23
+ *  generateNumberInRange(-200, -100, true) → -145
+ * ```
+ */
+export const generateNumberInRange = (lowerLimit: number = 0, upperLimit: number = 100, returnInteger: boolean = false): number => {
+  const difference = upperLimit - lowerLimit;
+  const result = (Math.random() * difference) + lowerLimit;
+  return returnInteger ? Math.floor(result) : (Math.round(result * 100) / 100);
+}

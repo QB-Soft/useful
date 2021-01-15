@@ -30,7 +30,9 @@
   "files": [
     "dist",
     "arrays",
-    "numbers"
+    "numbers",
+    "util",
+    "objects"
   ],
   "scripts": {
     "build": "tsc",

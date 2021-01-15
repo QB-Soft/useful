@@ -13,7 +13,9 @@
         "out": "docs",
         "entryPoints": [
             "src/arrays/index.ts",
-            "src/numbers/index.ts"
+            "src/numbers/index.ts",
+            "src/objects/index.ts",
+            "src/util/index.ts"
         ]
     },
     "include": [

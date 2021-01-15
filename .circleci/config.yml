@@ -6,23 +6,6 @@ defaults: &defaults
     - image: circleci/node:12
 
 commands:
-  docs:
-    steps:
-      - run:
-          name: Generate Documentation
-          command: npm run docs
-      - run:
-          name: Set Git Stuff
-          command: git config --global user.email "qarun80@hotmail.com" && git config --global user.name "Qarun Qadir Bissoondial" && git pull origin main
-      - run:
-          name: Add docs
-          command: git add --all
-      - run:
-          name: Commit docs
-          command: git commit -am "[ci skip] Auto-generated Documentation"
-      - run:
-          name: Push docs to current branch
-          command: git push -u origin main
   version_bump:
     parameters:
       vertype:
@@ -47,9 +30,15 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
+      - add_ssh_keys:
+            fingerprints:
+              - "82:84:80:71:b5:50:26:10:7a:64:a9:9f:e2:93:c4:44"
       - run:
           name: Build
           command: npm run build
+      - run:
+          name: Set Git Creds
+          command: git config --global user.email "qarun80@hotmail.com" && git config --global user.name "Qarun-Qadir-Bissoondial"
       - run:
           name: Bump Package version
           command: npm version $CIRCLE_BRANCH
