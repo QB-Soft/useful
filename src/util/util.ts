@@ -1,2 +1,5 @@
-export const and = (x1: any, x2: any) => x1 && x2;
-export const or = (x1: any, x2: any) => x1 || x2;
+export const and = (a: any, b: any) => a && b;
+
+export const or = (a: any, b: any) => a || b;
+
+export const add = (a: number, b: number) => a + b;
