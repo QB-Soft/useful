@@ -60,10 +60,13 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH_NAME: 'main' #optional defaults to master
 
-#      - name: Push to main
-#        run : git push origin ${{env.GITHUB_REF_SLUG}}:main
+      - name: Push to main
+        run : git push origin ${{env.GITHUB_REF_SLUG}}:main
+
+      - name: Version Bump
+        run: npm version env.GITHUB_REF_SLUG --allow-same-version
 #
-#      - name: Version Bump
-#        run: npm version env.GITHUB_REF_SLUG --allow-same-version
-#
-#      - name:
+      - name: NPM Publish
+      - run: npm publish --access public
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}

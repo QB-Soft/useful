@@ -47,7 +47,7 @@ describe('mergeObjects', () => {
 
 });
 
-describe.only('filterKeysBySubStr', () => {
+describe('filterKeysBySubStr', () => {
     let target = {
         firstName: 'John',
         middleName: 'Jack',

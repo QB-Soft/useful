@@ -39,6 +39,44 @@ export const mergeObjects = (...objs: object[]): object => {
     return objs.reduce((obj1, obj2) => { return Object.assign(obj1, obj2) }, {});
 };
 
+/**
+ * Returns an object containing keys filtered by name.
+ * Only works on top level for now
+ *
+ * ```
+ *  let obj = {
+ *      firstName: 'John',
+ *      middleName: 'Jack',
+ *      lastName: 'Jillian',
+ *      custInfo: {
+ *          balance: 100,
+ *          spent: 500
+ *      },
+ *      addressInfo: {
+ *          street: 'street',
+ *          city: 'city',
+ *          state: 'state'
+ *      }
+ *  }
+ *
+ *  filterKeysBySubStr(obj, 'name') -> { firstName: 'John', middleName: 'Jack', lastName: 'Jillian' }
+ *  filterKeysBySubStr(obj, 'info') -> {
+ *      custInfo: {
+ *          balance: 100,
+ *          spent: 500
+ *      },
+ *      addressInfo: {
+ *          street: 'street',
+ *          city: 'city',
+ *          state: 'state'
+ *      }
+ *  }
+ *
+ *  filterKeysBySubStr(obj, '') -> obj
+ *  filterKeysBySubStr('') -> {} // handle missing object
+ *  filterKeysBySubStr() -> {} // handle missing parameters
+ * ```
+ */
 export const filterKeysBySubStr = (target: object, filter: string): object => {
     if (!target) { return {}; }
     if (!filter) { return target; }
