@@ -85,23 +85,23 @@
 					<a name="generatenumberinrange" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> generate<wbr>Number<wbr>InRange</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
-						<li class="tsd-signature tsd-kind-icon">generate<wbr>Number<wbr>InRange<span class="tsd-signature-symbol">(</span>lowerLimit<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, upperLimit<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, returnFloat<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
+						<li class="tsd-signature tsd-kind-icon">generate<wbr>Number<wbr>InRange<span class="tsd-signature-symbol">(</span>lowerLimit<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, upperLimit<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">number</span>, returnInteger<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">number</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/299eb08/src/numbers/numbers.ts#L48">numbers/numbers.ts:48</a></li>
+									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/26a75cc/src/numbers/numbers.ts#L48">numbers/numbers.ts:48</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns a number between a lower and upper limit <strong>non-inclusive</strong>. Default limit is 0 - 100 if no parameters are specified.
-									Can also return a float to 2 decimal places if required.</p>
+									<p>Returns a floating point number to 2 decimal places between a lower and upper limit <strong>non-inclusive</strong>. Default limit is 0 - 100 if no parameters are specified.
+									Strict integer returns can also be specified.</p>
 								</div>
-								<pre><code><span style="color: #000000"> </span><span style="color: #795E26">generateNumberInRange</span><span style="color: #000000">() → </span><span style="color: #098658">54</span>
-<span style="color: #000000"> </span><span style="color: #795E26">generateNumberInRange</span><span style="color: #000000">(</span><span style="color: #098658">100</span><span style="color: #000000">, </span><span style="color: #098658">200</span><span style="color: #000000">) → </span><span style="color: #098658">145</span>
-<span style="color: #000000"> </span><span style="color: #795E26">generateNumberInRange</span><span style="color: #000000">(-</span><span style="color: #098658">200</span><span style="color: #000000">, -</span><span style="color: #098658">100</span><span style="color: #000000">, </span><span style="color: #0000FF">true</span><span style="color: #000000">) → -</span><span style="color: #098658">145.34</span>
+								<pre><code><span style="color: #000000"> </span><span style="color: #795E26">generateNumberInRange</span><span style="color: #000000">() → </span><span style="color: #098658">54.12</span>
+<span style="color: #000000"> </span><span style="color: #795E26">generateNumberInRange</span><span style="color: #000000">(</span><span style="color: #098658">100</span><span style="color: #000000">, </span><span style="color: #098658">200</span><span style="color: #000000">) → </span><span style="color: #098658">145.23</span>
+<span style="color: #000000"> </span><span style="color: #795E26">generateNumberInRange</span><span style="color: #000000">(-</span><span style="color: #098658">200</span><span style="color: #000000">, -</span><span style="color: #098658">100</span><span style="color: #000000">, </span><span style="color: #0000FF">true</span><span style="color: #000000">) → -</span><span style="color: #098658">145</span>
 </code></pre>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -113,7 +113,7 @@
 									<h5>upperLimit: <span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> = 100</span></h5>
 								</li>
 								<li>
-									<h5>returnFloat: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
+									<h5>returnInteger: <span class="tsd-signature-type">boolean</span><span class="tsd-signature-symbol"> = false</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">number</span></h4>
@@ -130,7 +130,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/299eb08/src/numbers/numbers.ts#L11">numbers/numbers.ts:11</a></li>
+									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/26a75cc/src/numbers/numbers.ts#L11">numbers/numbers.ts:11</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
