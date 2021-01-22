@@ -2,6 +2,7 @@
   "name": "@qb-soft/useful",
   "description": "A library containing useful functions to work with Object, Strings, Arrays and more.",
   "version": "0.2.5",
+  "license": "MIT",
   "author": {
     "name": "Qarun Qadir Bissoondial",
     "email": "qb-soft@outlook.com",
@@ -38,11 +39,13 @@
     "build": "tsc",
     "prepare": "npm run test:ci && npm run build",
     "test:local": "jest --coverage",
-    "test:ci": "jest --runInBand --ci",
-    "docs": "typedoc"
+    "test:ci": "jest --runInBand --ci --coverage",
+    "docs": "typedoc",
+    "coverage": "istanbul-badges-readme"
   },
   "devDependencies": {
     "@types/jest": "^26.0.19",
+    "istanbul-badges-readme": "^1.2.0",
     "jest": "^26.6.3",
     "ts-jest": "^26.4.4",
     "typedoc": "^0.20.13",

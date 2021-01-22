@@ -1,7 +1,7 @@
 # Useful
 
-[![QB-Soft](https://circleci.com/gh/QB-Soft/useful.svg?style=shield)](https://app.circleci.com/pipelines/github/QB-Soft/useful?branch=main) ![npm](https://img.shields.io/npm/dm/@qb-soft/useful) ![npm (scoped)](https://img.shields.io/npm/v/@qb-soft/useful)
-<!-- ![NPM](https://img.shields.io/npm/l/@qb-soft/useful) -->
+![npm](https://img.shields.io/npm/dm/@qb-soft/useful)
+![NPM](https://img.shields.io/npm/l/@qb-soft/useful) ![Functions](https://img.shields.io/badge/Coverage-100%25-brightgreen.svg)
 
 A library containing useful functions to work with Object, Strings, Arrays and more
 
@@ -34,17 +34,8 @@ import { selectRandomlyFromArray } from '@qb-soft/useful/arrays';
 import * as arrayFunctions from '@qb-soft/useful/arrays';
 ```
 
-## Function List
+You can find the full developer documentation <u> [here](https://qb-soft.github.io/useful/) </u>
 
-### Objects
-
-- selectRandomlyFromArray
-
-### Arrays 
-
-### Numbers
-
-### Strings
 
 ## Testing
 
