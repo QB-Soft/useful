@@ -62,8 +62,8 @@ jobs:
 
       - name: Version Bump
         run: npm version ${{env.GITHUB_REF_SLUG}} --allow-same-version
-#
+
       - name: NPM Publish
-        run: npm publish --access public
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
