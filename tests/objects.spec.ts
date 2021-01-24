@@ -1,4 +1,4 @@
-import {containsEmptyString, filterKeysBySubStr, mergeObjects} from "../src/objects";
+import {containsEmptyString, filterByKeys, filterKeysBySubStr, mergeObjects} from "../src/objects";
 
 describe('containsEmptyString', () => {
     it('should detect if an object has an empty string', () => {
@@ -95,5 +95,38 @@ describe('filterKeysBySubStr', () => {
     it('should return an empty object if the target object is falsy', () => {
         expect(filterKeysBySubStr(undefined, 'info')).toEqual({});
         expect(filterKeysBySubStr(null, 'info')).toEqual({});
+    });
+});
+
+describe.only('filterByKeys', () => {
+    let target = {
+        firstName: 'John',
+        middleName: 'Jack',
+        lastName: 'Jillian',
+        custInfo: {
+            balance: 100,
+            spent: 500
+        },
+        addressInfo: {
+            street: 'street',
+            city: 'city',
+            state: 'state'
+        }
+    };
+
+    it('should filter the object by a list of keys', () => {
+        expect(filterByKeys(target, ['firstName', 'lastName', 'custInfo'])).toEqual({
+            firstName: 'John',
+            lastName: 'Jillian',
+            custInfo: {
+                balance: 100,
+                spent: 500
+            },
+        });
+    });
+
+    it('should return the same object if no filters are provided', () => {
+        expect(filterByKeys(target, [])).toEqual(target);
+        expect(filterByKeys(target, undefined)).toEqual(target);
     });
 })

@@ -40,7 +40,7 @@ export const mergeObjects = (...objs: object[]): object => {
 };
 
 /**
- * Returns an object containing keys filtered by name.
+ * Returns an object filtered by key substring.
  * Only works on top level for now
  *
  * ```
@@ -84,4 +84,48 @@ export const filterKeysBySubStr = (target: object, filter: string): object => {
         const key = entry[0];
         return key.toLowerCase().includes(filter.toLowerCase())
     }));
-}
+};
+
+/**
+ * Returns an object containing keys filtered by a list of keys.
+ * The function will return the same object if no filters are provided.
+ * Only works on top level for now
+ *
+ * ```
+ *  let obj = {
+ *      firstName: 'John',
+ *      middleName: 'Jack',
+ *      lastName: 'Jillian',
+ *      custInfo: {
+ *          balance: 100,
+ *          spent: 500
+ *      },
+ *      addressInfo: {
+ *          street: 'street',
+ *          city: 'city',
+ *          state: 'state'
+ *      }
+ *  }
+ *
+ *  filterByKeys(obj, ['firstName', 'lastName', 'custInfo']) -> {
+ *          firstName: 'John',
+ *          lastName: 'Jillian',
+ *          custInfo: {
+ *              balance: 100,
+ *              spent: 500
+ *          },
+ *  });
+ * 
+ * ```
+ */
+export const filterByKeys = (target: object = {}, filter: string[] = []): object => {
+
+    if (!filter || !filter.length) { return target; }
+
+    return Object.fromEntries(filter.map(key => {
+        return key in target
+            // @ts-ignore
+            ? [key, target[key]]
+            : [key, null];
+    }));
+};
