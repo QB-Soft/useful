@@ -61,4 +61,4 @@ describe('Function name', () => {
 
 ```
 
-Clone the repository and run `npm run test`. A coverage report is automatically generated.
+Clone the repository and run `npm run test:local`. A coverage report is automatically generated.
