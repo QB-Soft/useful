@@ -73,6 +73,7 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="objects.html#containsemptystring" class="tsd-kind-icon">contains<wbr>Empty<wbr>String</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="objects.html#filterbykeys" class="tsd-kind-icon">filter<wbr>ByKeys</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="objects.html#filterkeysbysubstr" class="tsd-kind-icon">filter<wbr>Keys<wbr>BySub<wbr>Str</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="objects.html#mergeobjects" class="tsd-kind-icon">merge<wbr>Objects</a></li>
 							</ul>
@@ -92,7 +93,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/26a75cc/src/objects/objects.ts#L14">objects/objects.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/88320a6/src/objects/objects.ts#L14">objects/objects.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -119,6 +120,64 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="filterbykeys" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> filter<wbr>ByKeys</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">filter<wbr>ByKeys<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span>, filter<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/88320a6/src/objects/objects.ts#L121">objects/objects.ts:121</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Returns an object containing keys filtered by a list of keys.
+										The function will return the same object if no filters are provided.
+									Only works on top level for now</p>
+								</div>
+								<pre><code><span style="color: #000000"> </span><span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">obj</span><span style="color: #000000"> = {</span>
+<span style="color: #000000">     </span><span style="color: #001080">firstName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;John&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">     </span><span style="color: #001080">middleName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Jack&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">     </span><span style="color: #001080">lastName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Jillian&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">     </span><span style="color: #001080">custInfo:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">         </span><span style="color: #001080">balance:</span><span style="color: #000000"> </span><span style="color: #098658">100</span><span style="color: #000000">,</span>
+<span style="color: #000000">         </span><span style="color: #001080">spent:</span><span style="color: #000000"> </span><span style="color: #098658">500</span>
+<span style="color: #000000">     },</span>
+<span style="color: #000000">     </span><span style="color: #001080">addressInfo:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">         </span><span style="color: #001080">street:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;street&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">         </span><span style="color: #001080">city:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;city&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">         </span><span style="color: #001080">state:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;state&#039;</span>
+<span style="color: #000000">     }</span>
+<span style="color: #000000"> }</span>
+
+<span style="color: #000000"> </span><span style="color: #795E26">filterByKeys</span><span style="color: #000000">(</span><span style="color: #001080">obj</span><span style="color: #000000">, [</span><span style="color: #A31515">&#039;firstName&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;lastName&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;custInfo&#039;</span><span style="color: #000000">]) -&gt; {</span>
+<span style="color: #000000">         </span><span style="color: #001080">firstName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;John&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">         </span><span style="color: #001080">lastName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Jillian&#039;</span><span style="color: #000000">,</span>
+<span style="color: #000000">         </span><span style="color: #001080">custInfo:</span><span style="color: #000000"> {</span>
+<span style="color: #000000">             </span><span style="color: #001080">balance:</span><span style="color: #000000"> </span><span style="color: #098658">100</span><span style="color: #000000">,</span>
+<span style="color: #000000">             </span><span style="color: #001080">spent:</span><span style="color: #000000"> </span><span style="color: #098658">500</span>
+<span style="color: #000000">         },</span>
+<span style="color: #000000"> });</span>
+
+</code></pre>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>target: <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+								<li>
+									<h5>filter: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = ...</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
 					<a name="filterkeysbysubstr" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> filter<wbr>Keys<wbr>BySub<wbr>Str</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
@@ -128,12 +187,12 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/26a75cc/src/objects/objects.ts#L80">objects/objects.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/88320a6/src/objects/objects.ts#L80">objects/objects.ts:80</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
-									<p>Returns an object containing keys filtered by name.
+									<p>Returns an object filtered by key substring.
 									Only works on top level for now</p>
 								</div>
 								<pre><code><span style="color: #000000"> </span><span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">obj</span><span style="color: #000000"> = {</span>
@@ -192,7 +251,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/26a75cc/src/objects/objects.ts#L38">objects/objects.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/88320a6/src/objects/objects.ts#L38">objects/objects.ts:38</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -244,6 +303,9 @@
 				<ul class="before-current">
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="objects.html#containsemptystring" class="tsd-kind-icon">contains<wbr>Empty<wbr>String</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="objects.html#filterbykeys" class="tsd-kind-icon">filter<wbr>ByKeys</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="objects.html#filterkeysbysubstr" class="tsd-kind-icon">filter<wbr>Keys<wbr>BySub<wbr>Str</a>
