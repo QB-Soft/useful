@@ -44,11 +44,11 @@
     "coverage": "istanbul-badges-readme"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.19",
-    "istanbul-badges-readme": "^1.2.0",
+    "@types/jest": "^26.0.22",
+    "istanbul-badges-readme": "^1.2.1",
     "jest": "^26.6.3",
-    "ts-jest": "^26.4.4",
-    "typedoc": "^0.20.13",
-    "typescript": "^4.1.3"
+    "ts-jest": "^26.5.4",
+    "typedoc": "^0.20.35",
+    "typescript": "^4.2.3"
   }
 }

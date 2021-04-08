@@ -41,7 +41,8 @@ export const mergeObjects = (...objs: object[]): object => {
 
 /**
  * Returns an object filtered by key substring.
- * Only works on top level for now
+ * Since this function works on a single level, if you want to filter a deeply nested object,
+ * you'll have to specify the object directly.
  *
  * ```
  *  let obj = {
@@ -89,7 +90,6 @@ export const filterKeysBySubStr = (target: object, filter: string): object => {
 /**
  * Returns an object containing keys filtered by a list of keys.
  * The function will return the same object if no filters are provided.
- * Only works on top level for now
  *
  * ```
  *  let obj = {

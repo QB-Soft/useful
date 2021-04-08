@@ -32,7 +32,7 @@ describe('mergeObjects', () => {
         expect(mergeObjects(name)).toEqual(name);
     });
 
-    it('should return an emtpy object if given no objects', () => {
+    it('should return an empty object if given no objects', () => {
         expect(mergeObjects()).toEqual({});
     });
 
@@ -98,7 +98,7 @@ describe('filterKeysBySubStr', () => {
     });
 });
 
-describe.only('filterByKeys', () => {
+describe('filterByKeys', () => {
     let target = {
         firstName: 'John',
         middleName: 'Jack',
