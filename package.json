@@ -33,7 +33,8 @@
     "arrays",
     "numbers",
     "util",
-    "objects"
+    "objects",
+    "strings"
   ],
   "scripts": {
     "build": "tsc",

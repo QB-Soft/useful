@@ -1,0 +1,5 @@
+{
+    "name":"@qarun-qb/useful/strings",
+    "private":true,
+    "main":"../dist/strings/index.js"
+}
