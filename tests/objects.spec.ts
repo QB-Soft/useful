@@ -1,4 +1,4 @@
-import {containsEmptyString, filterByKeys, filterKeysBySubStr, mergeObjects} from "../src/objects";
+import {containsEmptyString, filterByKeys, filterKeysBySubStr, mergeObjects, removeFalsyObjValues} from "../src/objects";
 
 describe('containsEmptyString', () => {
     it('should detect if an object has an empty string', () => {
@@ -129,4 +129,27 @@ describe('filterByKeys', () => {
         expect(filterByKeys(target, [])).toEqual(target);
         expect(filterByKeys(target, undefined)).toEqual(target);
     });
+});
+
+describe.only('removeFalsyObjValues', () => {
+    let target: object;
+
+    beforeEach(() => {
+        target = {
+            name: 'Qarun',
+            age: undefined,
+            height: 180
+        };
+    });
+
+    it('should remove all falsy values from an object', () => {
+        expect(removeFalsyObjValues(target)).toEqual({
+            name: 'Qarun',
+            height: 180
+        });
+    });
+
+    it('should return an empty object if param is falsy', () => {
+        expect(removeFalsyObjValues(undefined)).toEqual({});
+    }); 
 })

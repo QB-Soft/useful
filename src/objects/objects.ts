@@ -129,3 +129,7 @@ export const filterByKeys = (target: object = {}, filter: string[] = []): object
             : [key, null];
     }));
 };
+
+export const removeFalsyObjValues = (target: object = {}): object => {
+    return Object.fromEntries(Object.entries(target).filter(entry => !!entry[1]));
+}
