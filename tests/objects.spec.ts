@@ -1,4 +1,4 @@
-import {containsEmptyString, filterByKeys, filterKeysBySubStr, mergeObjects, removeFalsyObjValues} from "../src/objects";
+import {containsEmptyString, filterByKeys, filterKeysBySubStr, mergeObjects, removeFalsyObjValues, convertToQueryString} from "../src/objects";
 
 describe('containsEmptyString', () => {
     it('should detect if an object has an empty string', () => {
@@ -153,3 +153,25 @@ describe.only('removeFalsyObjValues', () => {
         expect(removeFalsyObjValues(undefined)).toEqual({});
     }); 
 })
+describe.only('convertToQueryString', () => {
+    describe.only('Object param', () => {
+        let target: object;
+
+        beforeEach(() => {
+            target = {
+                name: 'Qarun',
+                age: 25,
+                height: 180
+            };
+        })
+
+        it('should convert an object to query parameters', () => {
+            expect(convertToQueryString(target)).toEqual('/?name=Qarun&age=25&height=180');
+        });
+
+        it('should ignore falsy values or empty object values', () => {
+            target['name'] = undefined;
+            expect(convertToQueryString(target)).toEqual('/?age=25&height=180')
+        });
+    });
+});

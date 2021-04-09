@@ -1,7 +1,7 @@
 {
   "name": "@qb-soft/useful",
   "description": "A library containing useful functions to work with Object, Strings, Arrays and more.",
-  "version": "0.2.5",
+  "version": "0.2.8",
   "license": "MIT",
   "author": {
     "name": "Qarun Qadir Bissoondial",
