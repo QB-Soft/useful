@@ -45,6 +45,11 @@ jobs:
       - name: Generate docs
         run: npm run docs
 
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          path: main
+
       - name: Set creds
         run: git config --global user.email "qarun80@hotmail.com" && git config --global user.name "Qarun-Qadir-Bissoondial"
 
