@@ -41,7 +41,8 @@ export const mergeObjects = (...objs: object[]): object => {
 
 /**
  * Returns an object filtered by key substring.
- * Only works on top level for now
+ * Since this function works on a single level, if you want to filter a deeply nested object,
+ * you'll have to specify the object directly.
  *
  * ```
  *  let obj = {
@@ -89,7 +90,6 @@ export const filterKeysBySubStr = (target: object, filter: string): object => {
 /**
  * Returns an object containing keys filtered by a list of keys.
  * The function will return the same object if no filters are provided.
- * Only works on top level for now
  *
  * ```
  *  let obj = {
@@ -128,4 +128,69 @@ export const filterByKeys = (target: object = {}, filter: string[] = []): object
             ? [key, target[key]]
             : [key, null];
     }));
+
 };
+
+/**
+ * Filters out falsy values from Object entries. 
+ * This function is intended to be used with Object entries, that is, 
+ * an array of key-value pairs. The returned object can then be 
+ * re-constructed using Object.fromEntries.
+ * 
+ * ```
+ *  removeFalsyObjEntries([['name', 'Qarun'], ['age', 25], ['height', undefined]]) -> [['name', 'Qarun'], ['age', 25]]
+ * ```
+ * @param entries Object entries of a Array<[key, value]> format
+ * @returns Filtered Object entries with truthy values
+ */
+export const removeFalsyObjEntries = (entries: Array<[any, any]> = []): Array<[any, any]> => {
+    entries = !!entries ? entries : [];
+    return entries.filter(entry => !!entry[1]);
+} 
+
+export const removeFalsyObjValues = (target: object = {}): object => {
+    return Object.fromEntries(removeFalsyObjEntries(Object.entries(target)));
+}
+
+
+/**
+ * Converts an Object, Map or Key-value list into a URL query string
+ * @param params Object containing query params
+ * @returns Query String
+ * ```
+ *  let target = { name: 'Qarun', age: 25, height: 180 };
+ *  convertToQueryString(target) -> '/?name=Qarun&age=25&height=180'
+ * 
+ *  target = new Map();
+ *  target.set('name', 'Qarun');
+ *  target.set('age', 25);
+ *  target.set('height', 180);
+ *  convertToQueryString(target) -> '/?name=Qarun&age=25&height=180'
+ * 
+ *  target = [['name', 'Qarun'], ['age', 25], ['height', 180]]
+ *  convertToQueryString(target) -> '/?name=Qarun&age=25&height=180'
+ * 
+ * ```
+ */
+export function convertToQueryString(params: object | Map<string, string> | Array<[string, string]>): string {
+
+    const BASE = '/?';
+
+    if (Array.isArray(params)) {
+        if (params.length === 0) { return BASE; }
+        return BASE.concat(removeFalsyObjEntries(params).map(e => `${e[0]}=${e[1].toString()}`).join('&'));
+    }
+
+    if (params instanceof Map) {
+        if (params.size === 0) { return BASE; }
+        return BASE.concat(removeFalsyObjEntries(Array.from(params.entries())).map(e => `${e[0]}=${e[1].toString()}`).join('&'));
+    }
+
+    if (typeof params === 'object') {
+        if (JSON.stringify(params) === '{}') { return BASE; }
+        return `${BASE}${removeFalsyObjEntries(Object.entries(params)).map(key => key.join('=')).join('&')}`;
+    }
+
+    return BASE;
+
+}

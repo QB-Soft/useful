@@ -1,4 +1,4 @@
-import {containsEmptyString, filterByKeys, filterKeysBySubStr, mergeObjects} from "../src/objects";
+import {containsEmptyString, filterByKeys, filterKeysBySubStr, mergeObjects, removeFalsyObjValues, convertToQueryString, removeFalsyObjEntries} from "../src/objects";
 
 describe('containsEmptyString', () => {
     it('should detect if an object has an empty string', () => {
@@ -32,7 +32,7 @@ describe('mergeObjects', () => {
         expect(mergeObjects(name)).toEqual(name);
     });
 
-    it('should return an emtpy object if given no objects', () => {
+    it('should return an empty object if given no objects', () => {
         expect(mergeObjects()).toEqual({});
     });
 
@@ -98,7 +98,7 @@ describe('filterKeysBySubStr', () => {
     });
 });
 
-describe.only('filterByKeys', () => {
+describe('filterByKeys', () => {
     let target = {
         firstName: 'John',
         middleName: 'Jack',
@@ -129,4 +129,65 @@ describe.only('filterByKeys', () => {
         expect(filterByKeys(target, [])).toEqual(target);
         expect(filterByKeys(target, undefined)).toEqual(target);
     });
-})
+});
+
+describe('removeFalsyObjEntries', () => {
+    it('should return an empty array if the parameters are falsy', () => {
+        expect(removeFalsyObjEntries(undefined)).toEqual([]);
+        expect(removeFalsyObjEntries(null)).toEqual([]);
+    });
+
+    it('should remove falsy values in entry key-value pair', () => {
+        expect(removeFalsyObjEntries([['name', 'Qarun'], ['age', 25], ['height', undefined]])).toEqual([['name', 'Qarun'], ['age', 25]]);
+    });
+});
+
+describe('removeFalsyObjValues', () => {
+    let target: object;
+
+    beforeEach(() => {
+        target = {
+            name: 'Qarun',
+            age: undefined,
+            height: 180
+        };
+    });
+
+    it('should remove all falsy values from an object', () => {
+        expect(removeFalsyObjValues(target)).toEqual({
+            name: 'Qarun',
+            height: 180
+        });
+    });
+
+    it('should return an empty object if param is falsy', () => {
+        expect(removeFalsyObjValues(undefined)).toEqual({});
+    }); 
+});
+
+describe('convertToQueryString', () => {
+    let target: object;
+
+    beforeEach(() => {
+        target = {
+            name: 'Qarun',
+            age: 25,
+            height: 180
+        };
+    });
+
+    it('should convert an object to query parameters', () => {
+        expect(convertToQueryString(target)).toEqual('/?name=Qarun&age=25&height=180');
+    });
+
+    it('should convert a map to a query string', () => {
+        expect(convertToQueryString(new Map(Object.entries(target)))).toEqual('/?name=Qarun&age=25&height=180');
+    });
+
+    it('should ignore falsy values or empty object values', () => {
+        // @ts-ignore
+        target['name'] = undefined;
+        expect(convertToQueryString(target)).toEqual('/?age=25&height=180')
+    });
+
+});

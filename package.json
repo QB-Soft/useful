@@ -1,7 +1,7 @@
 {
   "name": "@qb-soft/useful",
   "description": "A library containing useful functions to work with Object, Strings, Arrays and more.",
-  "version": "0.2.5",
+  "version": "0.2.8",
   "license": "MIT",
   "author": {
     "name": "Qarun Qadir Bissoondial",
@@ -33,7 +33,8 @@
     "arrays",
     "numbers",
     "util",
-    "objects"
+    "objects",
+    "strings"
   ],
   "scripts": {
     "build": "tsc",
@@ -44,11 +45,11 @@
     "coverage": "istanbul-badges-readme"
   },
   "devDependencies": {
-    "@types/jest": "^26.0.19",
-    "istanbul-badges-readme": "^1.2.0",
+    "@types/jest": "^26.0.22",
+    "istanbul-badges-readme": "^1.2.1",
     "jest": "^26.6.3",
-    "ts-jest": "^26.4.4",
-    "typedoc": "^0.20.13",
-    "typescript": "^4.1.3"
+    "ts-jest": "^26.5.4",
+    "typedoc": "^0.20.35",
+    "typescript": "^4.2.3"
   }
 }
