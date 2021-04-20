@@ -10,12 +10,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout 🛎️
+      - name: CI Setup - Checkout 🛎️
         uses: actions/checkout@v2
         with:
           persist-credentials: false
       
-      - name: Cache node modules
+      - name: CI Setup - Cache node modules
         uses: actions/cache@v2
         env:
           cache-name: cache-node-modules
@@ -27,13 +27,13 @@ jobs:
             ${{ runner.os }}-build-
             ${{ runner.os }}-
 
-      - name: Inject slug/short variables
+      - name: CI Setup - Inject slug/short variables
         uses: rlespinasse/github-slug-action@v3.x
 
-      - name: Ensure above Slug variables work
+      - name: CI Setup - Ensure above Slug variables work
         run: echo "${{env.GITHUB_REF_SLUG}}"
 
-      - name: Install 🔧
+      - name: Package Setup - Install 🔧
         run: npm install
       
       - name: Test 🚨
@@ -41,6 +41,14 @@ jobs:
 
       - name: Build 🧱
         run: npm run build
+
+      - name: Version Bump
+        run: npm version ${{env.GITHUB_REF_SLUG}} --allow-same-version
+
+      - name: NPM Publish
+        uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
 
       - name: Generate docs
         run: npm run docs
@@ -64,11 +72,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           BRANCH_NAME: 'main' #optional defaults to master
-
-      - name: Version Bump
-        run: npm version ${{env.GITHUB_REF_SLUG}} --allow-same-version
-
-      - name: NPM Publish
-        uses: JS-DevTools/npm-publish@v1
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
