@@ -1,4 +1,4 @@
-import {containsEmptyString, filterByKeys, filterKeysBySubStr, mergeObjects, removeFalsyObjValues, convertToQueryString} from "../src/objects";
+import {containsEmptyString, filterByKeys, filterKeysBySubStr, mergeObjects, removeFalsyObjValues, convertToQueryString, removeFalsyObjEntries} from "../src/objects";
 
 describe('containsEmptyString', () => {
     it('should detect if an object has an empty string', () => {
@@ -131,7 +131,18 @@ describe('filterByKeys', () => {
     });
 });
 
-describe.only('removeFalsyObjValues', () => {
+describe('removeFalsyObjEntries', () => {
+    it('should return an empty array if the parameters are falsy', () => {
+        expect(removeFalsyObjEntries(undefined)).toEqual([]);
+        expect(removeFalsyObjEntries(null)).toEqual([]);
+    });
+
+    it('should remove falsy values in entry key-value pair', () => {
+        expect(removeFalsyObjEntries([['name', 'Qarun'], ['age', 25], ['height', undefined]])).toEqual([['name', 'Qarun'], ['age', 25]]);
+    });
+});
+
+describe('removeFalsyObjValues', () => {
     let target: object;
 
     beforeEach(() => {
@@ -152,26 +163,31 @@ describe.only('removeFalsyObjValues', () => {
     it('should return an empty object if param is falsy', () => {
         expect(removeFalsyObjValues(undefined)).toEqual({});
     }); 
-})
-describe.only('convertToQueryString', () => {
-    describe.only('Object param', () => {
-        let target: object;
+});
 
-        beforeEach(() => {
-            target = {
-                name: 'Qarun',
-                age: 25,
-                height: 180
-            };
-        })
+describe('convertToQueryString', () => {
+    let target: object;
 
-        it('should convert an object to query parameters', () => {
-            expect(convertToQueryString(target)).toEqual('/?name=Qarun&age=25&height=180');
-        });
-
-        it('should ignore falsy values or empty object values', () => {
-            target['name'] = undefined;
-            expect(convertToQueryString(target)).toEqual('/?age=25&height=180')
-        });
+    beforeEach(() => {
+        target = {
+            name: 'Qarun',
+            age: 25,
+            height: 180
+        };
     });
+
+    it('should convert an object to query parameters', () => {
+        expect(convertToQueryString(target)).toEqual('/?name=Qarun&age=25&height=180');
+    });
+
+    it('should convert a map to a query string', () => {
+        expect(convertToQueryString(new Map(Object.entries(target)))).toEqual('/?name=Qarun&age=25&height=180');
+    });
+
+    it('should ignore falsy values or empty object values', () => {
+        // @ts-ignore
+        target['name'] = undefined;
+        expect(convertToQueryString(target)).toEqual('/?age=25&height=180')
+    });
+
 });
