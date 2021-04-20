@@ -73,9 +73,12 @@
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="objects.html#containsemptystring" class="tsd-kind-icon">contains<wbr>Empty<wbr>String</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="objects.html#converttoquerystring" class="tsd-kind-icon">convert<wbr>ToQuery<wbr>String</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="objects.html#filterbykeys" class="tsd-kind-icon">filter<wbr>ByKeys</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="objects.html#filterkeysbysubstr" class="tsd-kind-icon">filter<wbr>Keys<wbr>BySub<wbr>Str</a></li>
 								<li class="tsd-kind-function tsd-parent-kind-module"><a href="objects.html#mergeobjects" class="tsd-kind-icon">merge<wbr>Objects</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="objects.html#removefalsyobjentries" class="tsd-kind-icon">remove<wbr>Falsy<wbr>Obj<wbr>Entries</a></li>
+								<li class="tsd-kind-function tsd-parent-kind-module"><a href="objects.html#removefalsyobjvalues" class="tsd-kind-icon">remove<wbr>Falsy<wbr>Obj<wbr>Values</a></li>
 							</ul>
 						</section>
 					</div>
@@ -93,7 +96,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/88320a6/src/objects/objects.ts#L14">objects/objects.ts:14</a></li>
+									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/fe81c36/src/objects/objects.ts#L14">objects/objects.ts:14</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -120,6 +123,51 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="converttoquerystring" class="tsd-anchor"></a>
+					<h3>convert<wbr>ToQuery<wbr>String</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">convert<wbr>ToQuery<wbr>String<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/fe81c36/src/objects/objects.ts#L175">objects/objects.ts:175</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Converts an Object, Map or Key-value list into a URL query string</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>params: <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Object containing query params</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+							<p>Query String</p>
+							<pre><code><span style="color: #000000"> </span><span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">target</span><span style="color: #000000"> = { </span><span style="color: #001080">name:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;Qarun&#039;</span><span style="color: #000000">, </span><span style="color: #001080">age:</span><span style="color: #000000"> </span><span style="color: #098658">25</span><span style="color: #000000">, </span><span style="color: #001080">height:</span><span style="color: #000000"> </span><span style="color: #098658">180</span><span style="color: #000000"> };</span>
+<span style="color: #000000"> </span><span style="color: #795E26">convertToQueryString</span><span style="color: #000000">(</span><span style="color: #001080">target</span><span style="color: #000000">) -&gt; </span><span style="color: #A31515">&#039;/?name=Qarun&amp;age=25&amp;height=180&#039;</span>
+
+<span style="color: #000000"> </span><span style="color: #001080">target</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #267F99">Map</span><span style="color: #000000">();</span>
+<span style="color: #000000"> </span><span style="color: #001080">target</span><span style="color: #000000">.</span><span style="color: #795E26">set</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;name&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;Qarun&#039;</span><span style="color: #000000">);</span>
+<span style="color: #000000"> </span><span style="color: #001080">target</span><span style="color: #000000">.</span><span style="color: #795E26">set</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;age&#039;</span><span style="color: #000000">, </span><span style="color: #098658">25</span><span style="color: #000000">);</span>
+<span style="color: #000000"> </span><span style="color: #001080">target</span><span style="color: #000000">.</span><span style="color: #795E26">set</span><span style="color: #000000">(</span><span style="color: #A31515">&#039;height&#039;</span><span style="color: #000000">, </span><span style="color: #098658">180</span><span style="color: #000000">);</span>
+<span style="color: #000000"> </span><span style="color: #795E26">convertToQueryString</span><span style="color: #000000">(</span><span style="color: #001080">target</span><span style="color: #000000">) -&gt; </span><span style="color: #A31515">&#039;/?name=Qarun&amp;age=25&amp;height=180&#039;</span>
+
+<span style="color: #000000"> </span><span style="color: #001080">target</span><span style="color: #000000"> = [[</span><span style="color: #A31515">&#039;name&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;Qarun&#039;</span><span style="color: #000000">], [</span><span style="color: #A31515">&#039;age&#039;</span><span style="color: #000000">, </span><span style="color: #098658">25</span><span style="color: #000000">], [</span><span style="color: #A31515">&#039;height&#039;</span><span style="color: #000000">, </span><span style="color: #098658">180</span><span style="color: #000000">]]</span>
+<span style="color: #000000"> </span><span style="color: #795E26">convertToQueryString</span><span style="color: #000000">(</span><span style="color: #001080">target</span><span style="color: #000000">) -&gt; </span><span style="color: #A31515">&#039;/?name=Qarun&amp;age=25&amp;height=180&#039;</span>
+
+</code></pre>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
 					<a name="filterbykeys" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> filter<wbr>ByKeys</h3>
 					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
@@ -129,14 +177,13 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/88320a6/src/objects/objects.ts#L121">objects/objects.ts:121</a></li>
+									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/fe81c36/src/objects/objects.ts#L121">objects/objects.ts:121</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Returns an object containing keys filtered by a list of keys.
-										The function will return the same object if no filters are provided.
-									Only works on top level for now</p>
+									The function will return the same object if no filters are provided.</p>
 								</div>
 								<pre><code><span style="color: #000000"> </span><span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">obj</span><span style="color: #000000"> = {</span>
 <span style="color: #000000">     </span><span style="color: #001080">firstName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;John&#039;</span><span style="color: #000000">,</span>
@@ -167,10 +214,10 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>target: <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> = ...</span></h5>
+									<h5>target: <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> = {}</span></h5>
 								</li>
 								<li>
-									<h5>filter: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = ...</span></h5>
+									<h5>filter: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
@@ -187,13 +234,14 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/88320a6/src/objects/objects.ts#L80">objects/objects.ts:80</a></li>
+									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/fe81c36/src/objects/objects.ts#L81">objects/objects.ts:81</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
 								<div class="lead">
 									<p>Returns an object filtered by key substring.
-									Only works on top level for now</p>
+										Since this function works on a single level, if you want to filter a deeply nested object,
+									you&#39;ll have to specify the object directly.</p>
 								</div>
 								<pre><code><span style="color: #000000"> </span><span style="color: #0000FF">let</span><span style="color: #000000"> </span><span style="color: #001080">obj</span><span style="color: #000000"> = {</span>
 <span style="color: #000000">     </span><span style="color: #001080">firstName:</span><span style="color: #000000"> </span><span style="color: #A31515">&#039;John&#039;</span><span style="color: #000000">,</span>
@@ -251,7 +299,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/88320a6/src/objects/objects.ts#L38">objects/objects.ts:38</a></li>
+									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/fe81c36/src/objects/objects.ts#L38">objects/objects.ts:38</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -271,6 +319,66 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5><span class="tsd-flag ts-flagRest">Rest</span> <span class="tsd-signature-symbol">...</span>objs: <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="removefalsyobjentries" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> remove<wbr>Falsy<wbr>Obj<wbr>Entries</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Falsy<wbr>Obj<wbr>Entries<span class="tsd-signature-symbol">(</span>entries<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">[]</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/fe81c36/src/objects/objects.ts#L146">objects/objects.ts:146</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Filters out falsy values from Object entries.
+										This function is intended to be used with Object entries, that is,
+										an array of key-value pairs. The returned object can then be
+									re-constructed using Object.fromEntries.</p>
+								</div>
+								<pre><code><span style="color: #000000"> </span><span style="color: #795E26">removeFalsyObjEntries</span><span style="color: #000000">([[</span><span style="color: #A31515">&#039;name&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;Qarun&#039;</span><span style="color: #000000">], [</span><span style="color: #A31515">&#039;age&#039;</span><span style="color: #000000">, </span><span style="color: #098658">25</span><span style="color: #000000">], [</span><span style="color: #A31515">&#039;height&#039;</span><span style="color: #000000">, </span><span style="color: #0000FF">undefined</span><span style="color: #000000">]]) -&gt; [[</span><span style="color: #A31515">&#039;name&#039;</span><span style="color: #000000">, </span><span style="color: #A31515">&#039;Qarun&#039;</span><span style="color: #000000">], [</span><span style="color: #A31515">&#039;age&#039;</span><span style="color: #000000">, </span><span style="color: #098658">25</span><span style="color: #000000">]]</span>
+</code></pre>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>entries: <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> = []</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Object entries of a Array&lt;[key, value]&gt; format</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-symbol">[</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">]</span><span class="tsd-signature-symbol">[]</span></h4>
+							<p>Filtered Object entries with truthy values</p>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function tsd-parent-kind-module">
+					<a name="removefalsyobjvalues" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> remove<wbr>Falsy<wbr>Obj<wbr>Values</h3>
+					<ul class="tsd-signatures tsd-kind-function tsd-parent-kind-module">
+						<li class="tsd-signature tsd-kind-icon">remove<wbr>Falsy<wbr>Obj<wbr>Values<span class="tsd-signature-symbol">(</span>target<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">object</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/QB-Soft/useful/blob/fe81c36/src/objects/objects.ts#L151">objects/objects.ts:151</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>target: <span class="tsd-signature-type">object</span><span class="tsd-signature-symbol"> = {}</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">object</span></h4>
@@ -305,6 +413,9 @@
 						<a href="objects.html#containsemptystring" class="tsd-kind-icon">contains<wbr>Empty<wbr>String</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="objects.html#converttoquerystring" class="tsd-kind-icon">convert<wbr>ToQuery<wbr>String</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="objects.html#filterbykeys" class="tsd-kind-icon">filter<wbr>ByKeys</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
@@ -312,6 +423,12 @@
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-module">
 						<a href="objects.html#mergeobjects" class="tsd-kind-icon">merge<wbr>Objects</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="objects.html#removefalsyobjentries" class="tsd-kind-icon">remove<wbr>Falsy<wbr>Obj<wbr>Entries</a>
+					</li>
+					<li class=" tsd-kind-function tsd-parent-kind-module">
+						<a href="objects.html#removefalsyobjvalues" class="tsd-kind-icon">remove<wbr>Falsy<wbr>Obj<wbr>Values</a>
 					</li>
 				</ul>
 			</nav>
